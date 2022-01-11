@@ -40,7 +40,7 @@ container.style.setProperty('--grid-cols',grid);
    i-=10;
     this.style.backgroundColor=`hsl(${Math.floor(Math.random()*256)},100%,${i}%)`
     console.log(i)
-    if(i===0){
+    if(i===0 || i<0){
         i=100;
     }
 }
