@@ -2,10 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JS Drum Kit</title>
+  <title>ECH-A-SKETCH</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="clear">clear</button>
+    <div id="container">
+</div>
+
+
+
+
+
+
+
+
+<script>
+    const container=document.getElementById('container');
+    var grid=16;
+    console.log(grid)
+    function makeGrid(){
+container.style.setProperty('--grid-rows',grid);
+container.style.setProperty('--grid-cols',grid);
+        for(c=0;c<(grid*grid);c++){
+
+            let cell=document.createElement('div');
+           /* cell.innerText = (c + 1);*/
+
+            container.appendChild(cell).className='griditem';
+        }
+        document.querySelectorAll('.griditem').forEach(item=>item.addEventListener('mouseover', colorChange))
+    }
+
+    makeGrid();
+    i=100
+ function colorChange(){
+   i-=10;
+    this.style.backgroundColor=`hsl(${Math.floor(Math.random()*256)},100%,${i}%)`
+    console.log(i)
+    if(i===0){
+        i=100;
+    }
+}
+
+ 
+//on  mouseover color changes
+
+function clear(){//clears the grid and asks for the value of the new one
+    let gridclear=document.querySelectorAll('.griditem').forEach(item=>item.remove())
+    grid=prompt("how many squares per side for your new grid?")
+    for(i=0;grid>100;i++){
+        grid=prompt("Please, enter a value lower then 100")
+    }
+    makeGrid()
+    console.log(grid)
+}
+
+document.getElementById('clear').addEventListener('click',clear)
+
+
+</script>
 
 
 </body>
